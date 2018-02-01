@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#set -x
+set -e
 
 # use command submin
 hostname="${SUBMIN_HOSTNAME:-submin.local}"
