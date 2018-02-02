@@ -2,9 +2,10 @@
 FROM centos
 
 # MAINTAINER
-MAINTAINER json_hc@163.com
+MAINTAINER 540797670@qq.com
 
 # put nginx-1.12.2.tar.gz into /usr/local/src and unpack nginx
+RUN yum -y install  wget
 WORKDIR /usr/local/src
 RUN wget http://nginx.org/download/nginx-1.12.2.tar.gz
 RUN tar -xzvf nginx-1.12.2.tar.gz
