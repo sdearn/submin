@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -x
 
 # use command submin
 hostname="${SUBMIN_HOSTNAME:-submin.local}"
@@ -32,5 +32,5 @@ else
     echo "Submin is already configured in ${data_dir}/conf"
 fi
 service httpd restart
-
-#tail -f /etc/httpd/logs/access.log /etc/httpd/logs/error.log
+#
+tail -f /etc/httpd/logs/access_log /etc/httpd/logs/error_log
