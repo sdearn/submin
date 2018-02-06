@@ -5,8 +5,9 @@ set -x
 # use command submin
 hostname="${SUBMIN_HOSTNAME:-submin.local}"
 external_port="${SUBMIN_EXTERNAL_PORT:-80}"
-data_dir="${SUBMIN_DATA_DIR:-/var/lib/submin}"
-svn_repo="${SUBMIN_SVN_DIR:-/var/lib/svn}"
+data_dir="${SUBMIN_DATA_DIR:-/submin/data}"
+svn_repo="${SUBMIN_SVN_DIR:-/submin/svn}"
+git_repo="${SUBMIN_GIT_DIR:-/submin/git}"
 admin_mail="${SUBMIN_ADMIN_MAIL:-root@submin.local}"
 
 if [ ! -e ${data_dir} ]; then
@@ -24,6 +25,8 @@ if [ ! -e ${data_dir} ]; then
 
     # disable git
     submin2-admin ${data_dir} config set vcs_plugins svn || true
+    
+    submin2-admin ${data_dir} config set git_dir ${git_repo}
     
     echo -e "git\n${hostname}\n127.0.0.1\n22\n" \
         | submin2-admin ${data_dir} git init > /dev/null
