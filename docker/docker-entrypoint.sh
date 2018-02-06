@@ -24,6 +24,9 @@ if [ ! -e ${data_dir} ]; then
 
     # disable git
     submin2-admin ${data_dir} config set vcs_plugins svn || true
+    
+    echo -e "git\n${hostname}\n127.0.0.1\n22\n" \
+        | submin2-admin ${data_dir} git init > /dev/null
 
     key=`echo "SELECT key FROM password_reset;" | sqlite3 ${data_dir}/conf/submin.db`
     echo "access http://${hostname}:${external_port}/submin/password/admin/${key} to reset password"
@@ -32,5 +35,7 @@ else
     echo "Submin is already configured in ${data_dir}/conf"
 fi
 service httpd restart
+/usr/sbin/sshd
+/usr/sbin/sshd -D
 #
 tail -f /etc/httpd/logs/access_log /etc/httpd/logs/error_log
