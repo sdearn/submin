@@ -17,7 +17,7 @@ ENV SUBMIN_ADMIN_MAIL root@submin.local
 
 # Install
 RUN yum -y install httpd subversion mod_dav_svn wget apr-util-sqlite apr-util sudo git openssl openssh-server
-RUN yum -y install sudo git openssl openssh-server
+RUN yum -y install sudo git openssl openssh-server sendmail mailx
 RUN echo 'LoadModule authn_dbd_module modules/mod_authn_dbd.so' >>/etc/httpd/conf/httpd.conf
 RUN echo 'LoadModule dbd_module modules/mod_dbd.so' >>/etc/httpd/conf/httpd.conf
 
