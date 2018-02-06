@@ -22,6 +22,10 @@ if [ ! -e ${data_dir} ]; then
 
     chmod 755  ${data_dir}/../
     chown apache:apache -R ${data_dir}
+    
+    submin2-admin ${data_dir} config set commit_email_from "Submin <submin@${hostname}>"
+
+    submin2-admin ${data_dir} config set smtp_from "Submin <submin@${hostname}>"
 
     # disable git
     submin2-admin ${data_dir} config set vcs_plugins svn || true
