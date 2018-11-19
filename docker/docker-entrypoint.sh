@@ -20,7 +20,10 @@ submin2-admin ${data_dir} apacheconf create all >/dev/null 2>&1 || true
 ln -s ${data_dir}/conf/apache-webui-cgi.conf /etc/httpd/conf.d/
 ln -s ${data_dir}/conf/apache-svn.conf /etc/httpd/conf.d/
 
-chmod 755  ${data_dir}/../
+chmod -R 755  ${data_dir}
+chmod -R 755  ${svn_repo}
+chmod -R 755  ${git_repo}
+
 chown apache:apache -R ${data_dir}
 chown apache:apache -R ${svn_repo}
 
