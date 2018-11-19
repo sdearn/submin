@@ -23,7 +23,7 @@ RUN yum -y install httpd subversion mod_dav_svn wget apr-util-sqlite apr-util
 
 # Install submin
 WORKDIR /usr/local/src/
-RUN wget http://supermind.nl/submin/current/submin-2.2.1-1.tar.gz
+ADD submin-2.2.1-1.tar.gz submin-2.2.1-1.tar.gz
 RUN tar -xzvf submin-2.2.1-1.tar.gz
 WORKDIR /usr/local/src/submin-2.2.1-1/
 RUN python setup.py install
